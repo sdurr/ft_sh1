@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   ft_sh.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 09:46:49 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/08 09:42:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_sh1.h"
-#include <stdlib.h>
+#ifndef		FT_SH1_H
+# define	FT_SH1_H
 
-int		ft_sh1(char **av, char **env)
-{
-	char	*line;
-	int		ret;
+int			main(int ac, char **av, char **env);
+int			ft_sh1(char **av, char **env);
+int			commande_sys(char **line, char **av, char **env);
+int			test_commande(char **line, char **av, char **env);
 
-	ret = 1;
-	*env = ft_getenv(env);
-	line = ft_strnew(15);
-	ft_putstr("& > ");
-	while (ret == 1)
-	{
-		ret = get_next_line(0, &line);
-		test_commande(&line, av, env);
-		ft_putstr(line);
-		free(line);
-	}
-	return (0);
-}
+void		fils(char **line, char **av, char **env);
+
+char		*ft_getenv(char **env);
+
+#endif

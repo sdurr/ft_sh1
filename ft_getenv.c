@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 09:46:49 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/08 09:40:19 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/08 09:49:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
-#include "ft_sh1.h"
-#include <stdlib.h>
 
-int		ft_sh1(char **av, char **env)
+char *ft_getenv(char **env)
 {
-	char	*line;
-	int		ret;
+	char *ret;
 
-	ret = 1;
-	*env = ft_getenv(env);
-	line = ft_strnew(15);
-	ft_putstr("& > ");
-	while (ret == 1)
-	{
-		ret = get_next_line(0, &line);
-		test_commande(&line, av, env);
-		ft_putstr(line);
-		free(line);
-	}
-	return (0);
+	ret = ft_strchr(*env, '=');
+	ret++;
+	return (ret);
 }
