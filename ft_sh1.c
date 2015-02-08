@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 09:46:49 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/08 10:01:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ int		ft_sh1(char **av, char **env)
 	ret = 1;
 	*env = ft_getenv(env);
 	line = ft_strnew(15);
-	ft_putstr("& > ");
+	ft_putstr("minishell1 > ");
 	while (ret == 1)
 	{
 		ret = get_next_line(0, &line);
-		test_commande(&line, av, env);
-		ft_putstr(line);
+		if (test_commande(&line, av, env) == -1)
+			ret = 0;
+		ft_putstr("minishell1 > ");
 		free(line);
 	}
 	return (0);

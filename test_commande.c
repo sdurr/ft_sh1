@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 09:48:36 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/08 10:01:00 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int		test_commande(char **line, char **av, char **env)
 		|| ft_strncmp(*line, "setenv", 7) == 0)
 		return (0);
 	if (ft_strncmp(*line, "exit", 4) == 0)
-		return (0);
+		return (-1);
 	return (1);
 }
