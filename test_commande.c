@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 10:01:00 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/08 13:25:08 by tremblin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int		test_commande(char **line, char **av, char **env)
 		|| ft_strncmp(*line, "/bin/pwd", 8) == 0
 		||  ft_strncmp(*line, "pwd", 3) == 0 || ft_strncmp(*line, "env", 3) == 0)
 		return (commande_sys(line, av, env));
-	if (ft_strncmp(*line, "cd", 2) == 0 || ft_strncmp(*line, "/bin/cd", 7) == 0
-		|| ft_strncmp(*line, "setenv", 7) == 0)
-		return (0);
+	if (ft_strncmp(*line, "cd", 2) == 0 || ft_strncmp(*line, "/bin/cd", 7) == 0)
+		return (ft_cd(line));
 	if (ft_strncmp(*line, "exit", 4) == 0)
 		return (-1);
 	return (1);

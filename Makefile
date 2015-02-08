@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/08 09:52:03 by sdurr            ###   ########.fr        #
+#    Updated: 2015/02/08 13:24:20 by tremblin         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,6 +14,7 @@ NAME		= ft_minishell1
 
 SRC			= main.c \
 				ft_sh1.c \
+				ft_cd.c \
 				commande_sys.c \
 				test_commande.c \
 				fils.c \

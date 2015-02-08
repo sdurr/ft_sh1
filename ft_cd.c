@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fils.c                                             :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tremblin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/08 13:31:52 by tremblin         ###   ########.fr       */
+/*   Created: 2015/02/08 13:20:24 by tremblin          #+#    #+#             */
+/*   Updated: 2015/02/08 13:29:05 by tremblin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-void		fils(char **line, char **av, char **env)
+int		ft_cd(char **line)
 {
-	if (ft_strncmp(*line, "ls", 2) == 0)
-		execve("/bin/ls", av, env);
-	if (ft_strncmp(*line, "pwd", 3) == 0)
-		execve("/bin/pwd", av, env);
-	if (ft_strncmp(*line, "env", 3) == 0)
-		execve("/bin/env", env, av);
+	char *ch;
+	
+	ch = ft_strchr(*line, ' ');
+	ch++;
+	chdir("~");
+	chdir(ch);
+	return (1);
 }
