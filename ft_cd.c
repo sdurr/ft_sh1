@@ -6,7 +6,7 @@
 /*   By: tremblin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 13:20:24 by tremblin          #+#    #+#             */
-/*   Updated: 2015/02/09 08:43:59 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/09 12:43:37 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ int		ft_cd(char **line)
 {
 	char *ch;
 
-	ch = ft_strchr(*line, ' ');
-	ch++;
+	if (**line != '/')
+	{
+		ch = ft_strchr(*line, ' ');
+		ch++;
+	}
+	if (**line == '/')
+		ch = ft_strdup(*line);
 	chdir("~");
 	chdir(ch);
 	return (1);

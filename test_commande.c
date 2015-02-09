@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 10:25:03 by tremblin         ###   ########.fr       */
+/*   Updated: 2015/02/09 13:22:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,22 @@ int		test_commande(char **line, char **av, char **env)
 		|| ft_strncmp(*line, "/bin/pwd", 8) == 0
 		||  ft_strncmp(*line, "pwd", 3) == 0 || ft_strncmp(*line, "env", 3) == 0)
 		return (commande_sys(line, av, env));
-	if (ft_strncmp(*line, "setenv", 6) == 0)
+	else if (ft_strncmp(*line, "setenv", 6) == 0)
 	{
-		ft_set_env(line, env);
+		env = ft_set_env(line, env);
 		return (1);
 	}
-	if (ft_strncmp(*line, "cd", 2) == 0 || ft_strncmp(*line, "/bin/cd", 7) == 0)
+	else if (ft_strncmp(*line, "cd", 2) == 0 || ft_strncmp(*line, "/bin/cd", 7) == 0
+			 || **line == '/')
 		return (ft_cd(line));
-	if (ft_strncmp(*line, "exit", 4) == 0)
+	else if (ft_strncmp(*line, "exit", 4) == 0)
 		return (-1);
-	return (1);
+	else
+		if (**line != '\0')
+		{
+			ft_putstr_fd("command not found: ", 2);
+			ft_putstr_fd(*line, 2);
+			ft_putchar ('\n');
+		}
+		return (1);
 }

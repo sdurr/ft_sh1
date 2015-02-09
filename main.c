@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:59:14 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/06 10:00:59 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/09 12:51:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		main(int ac, char **av, char **env)
 {
 
-	while (ft_sh1(av, env) == 1)
+	ft_sh1(av, env);
 		ac = ac;
 	return (0);
 }

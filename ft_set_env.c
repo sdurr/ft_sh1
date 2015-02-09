@@ -6,23 +6,28 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 10:23:43 by tremblin         ###   ########.fr       */
+/*   Updated: 2015/02/09 13:33:29 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "libft.h"
 
-void			ft_set_env(char **line, char **env)
+char 			**ft_set_env(char **line, char **env)
 {
-	char *recup;
+	char **recup;
 	int i;
-	
-	recup = ft_strchr(*line, 'v');
-	recup++;
-	while (*env[i] != '=')
+	char *bkp;
+
+	bkp = ft_strdup(*line);
+	i = 0;
+	while (env[i] != NULL)
 		i++;
-	i++;
-	while (*recup != '\0')
-		*env[i++] = *recup++;
+	if (!(recup = (char **)malloc(sizeof(char *) * i + 2)))
+		return (NULL);
+	bkp += 7;
+	env[i] = ft_strdup(bkp);
+	env[i + 1] = NULL;
+	return (env);
 }

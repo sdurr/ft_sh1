@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 09:26:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/09 13:28:36 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		fils(char **line, char **av, char **env)
 		{
 			ft_putchar ('\n');
 			ft_putstr(*env);
-						env++;
+			env++;
 		}
+	ft_putchar ('\n');
 }
