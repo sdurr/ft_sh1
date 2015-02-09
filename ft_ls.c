@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:21:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 14:24:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/09 15:32:50 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void		ft_ls(char **line, char **env, char **av)
 	}
 	argv = av;
 	if (*arg != '\0' && *arg == '-')
-	argv = ft_argv(arg);
+		argv = ft_argv(arg);
 	execve("/bin/ls", argv, env);
 }
