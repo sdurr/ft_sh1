@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 09:25:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/09 10:24:14 by tremblin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			ft_sh1(char **av, char **env);
 int			ft_cd(char **line);
 int			commande_sys(char **line, char **av, char **env);
 int			test_commande(char **line, char **av, char **env);
-int			ft_set_env(char **line, char **env);
+void		ft_set_env(char **line, char **env);
 void		fils(char **line, char **av, char **env);
 void		ft_ls(char **line, char **envv, char **av);
 
