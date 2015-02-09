@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fils.c                                             :+:      :+:    :+:   */
+/*   ft_set_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 09:26:18 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/09 09:20:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
-#include "ft_sh1.h"
 
-void		fils(char **line, char **av, char **env)
+int			ft_set_env(char **line, char **env)
 {
-	if (ft_strncmp(*line, "ls", 2) == 0)
-		ft_ls(line, env, av);
-	if (ft_strncmp(*line, "pwd", 3) == 0)
-		execve("/bin/pwd", av, env);
-	if (ft_strncmp(*line, "env", 3) == 0)
-		while (*env != NULL)
-		{
-			ft_putchar ('\n');
-			ft_putstr(*env);
-						env++;
-		}
+	char *recup;
+
+	env = env;
+	recup = ft_strchr(*line, 'v');
+	recup++;
+	return (0);
 }

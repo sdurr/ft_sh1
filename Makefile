@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/08 13:24:20 by tremblin         ###   ########.fr        #
+#    Updated: 2015/02/09 09:25:05 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,6 +19,8 @@ SRC			= main.c \
 				test_commande.c \
 				fils.c \
 				ft_getenv.c \
+				ft_set_env.c \
+				ft_ls.c \
 
 OBJ			= $(SRC:.c=.o)
 

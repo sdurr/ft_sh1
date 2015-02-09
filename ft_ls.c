@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fils.c                                             :+:      :+:    :+:   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 09:26:18 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/09 09:21:54 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/09 09:28:40 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
-#include "ft_sh1.h"
 
-void		fils(char **line, char **av, char **env)
+void		ft_ls(char **line, char **env, char **av)
 {
-	if (ft_strncmp(*line, "ls", 2) == 0)
-		ft_ls(line, env, av);
-	if (ft_strncmp(*line, "pwd", 3) == 0)
-		execve("/bin/pwd", av, env);
-	if (ft_strncmp(*line, "env", 3) == 0)
-		while (*env != NULL)
-		{
-			ft_putchar ('\n');
-			ft_putstr(*env);
-						env++;
-		}
+	char *arg;
+
+	arg = ft_strchr(*line, 's');
+	arg++;
+	arg++;
+	ft_putstr(arg);
+	if (*arg != '\0')
+		execve("/bin/ls", &arg, env);
+	else
+	{
+			ft_putstr("test");
+		execve("/bin/ls", av, env);
+		ft_putstr("test");
+	}
 }
