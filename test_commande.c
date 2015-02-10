@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 09:11:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/10 09:51:47 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		test_commande(char **line, char **av, char **env)
 		|| ft_strncmp(*line, "cat", 3) == 0
 		|| ft_strncmp(*line, "/bin/cat", 3) == 0)
 		return (commande_sys(line, av, env));
-	else if (ft_strncmp(*line, "setenv", 6) == 0)
+	else if (ft_strncmp(*line, "setenv", 6) == 0 || ft_strncmp(*line, "unsetenv", 8) == 0)
 	{
 		env = ft_set_env(line, env);
 		return (1);
