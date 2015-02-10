@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   ft_cat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 09:09:16 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/10 08:42:06 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/10 09:10:25 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_sh1.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-int		ft_sh1(char **av, char **env)
+void		ft_cat(char **line, char **env, char **av)
 {
-	char	*line;
-	int		ret;
-	int		test;
+	char	*arg;
+	int		i;
+	char	*test;
 
-	ret = 1;
-	line = ft_strnew(15);
-	ft_putstr("minishell1 > ");
-	while (ret == 1)
+	test = NULL;
+	i = 0;
+	arg = ft_strdup(*line);
+	arg += 4;
+	if (*arg == '-')
 	{
-		ret = get_next_line(0, &line);
-		if ((test = test_commande(&line, av, env)) == -1)
-			return (0);
-		free(line);
-		ft_putstr("minishell1 > ");
+		test = ft_strnew(3);
+		test[0] = *arg;
+		arg++;
+		test[1] = *arg;
+		arg += 2;
+		ft_putchar (*arg);
 	}
-	return (0);
+	av[i++] = ft_strdup("cat");
+	if (test != NULL)
+		av[i++] = test;
+	av[i++] = ft_strdup(arg);
+	av[i] = NULL;
+	execve("/bin/cat", av, env);
 }

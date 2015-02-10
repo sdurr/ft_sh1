@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:21:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 15:32:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/10 09:49:25 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,44 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static char	**ft_argv(char *arg)
-{
-	char **ret;
-	int i;
-	int count;
-	int j;
-
-	i = -1;
-	count = 1;
-	while (arg[++i])
-	{
-		while (arg[i] != ' ')
-			i++;
-		count++;
-	}
-	ret = (char **)malloc(sizeof(char *) * count + 1);
-	i = -1;
-	count = 0;
-	j = 0;
-	while (arg[++i])
-		while (arg[++i])
-		{
-			while (arg[i] != ' ')
-				ret[count][j++] = arg[i++];
-			ret[count][i] = '\0';
-			count++;
-		}
-	ret[count] = NULL;
-	return (ret);
-
-}
-
 void		ft_ls(char **line, char **env, char **av)
 {
 	char *arg;
-	char **argv;
+	int i;
+	int ret;
+	int j;
 
+	ret = 1;
 	av = av;
 	arg = ft_strchr(*line, 's');
 	arg++;
 	arg++;
+	i = 0;
+	while (ret == 1)
+	{
+		j = 0;
+		if (*arg == '-')
+		{
+			while (*arg != ' ')
+			{
+
+				av[i] = ft_strnew(15);
+				av[i][j] = *arg;
+				arg++;
+			}
+			arg++;
+		}
+		else
+		ret = 0;
+		ft_putstr(av[i]);
+		ft_putchar ('\n');
+		i++;
+	}
+	av[i] = NULL;
 	if (*arg != '\0' && *arg != '-')
 	{
 		chdir("~");
 		chdir(arg);
 	}
-	argv = av;
-	if (*arg != '\0' && *arg == '-')
-		argv = ft_argv(arg);
-	execve("/bin/ls", argv, env);
+	execve("/bin/ls", av, env);
 }

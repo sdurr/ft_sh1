@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/09 15:28:55 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/10 09:08:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char 			**ft_set_env(char **line, char **env)
+char	**ft_set_env(char **line, char **env)
 {
 	int			i;
 	char		*bkp;
