@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 16:58:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/10 17:02:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,29 @@
 #include "libft.h"
 #include "ft_sh1.h"
 
-char	**ft_set_env(char **line, char **env)
+char	**ft_unset_env(char **line, char **env)
 {
 	int			i;
 	char		*bkp;
 	char		*test;
 	int			r;
+	int		ret;
 
-	if (ft_strncmp(*line, "unsetenv", 8) == 0)
-		return (ft_unset_env(line, env));
 	bkp = ft_strdup(*line);
 	i = -1;
 	test = ft_strnew(15);
-	bkp += 7;
-	r = ft_count_char(bkp, '=');
+	bkp += 9;
+	r = ft_strlen(bkp);
 	test = ft_strncpy(test, bkp, r);
 	while (env[++i] != NULL)
 		if (ft_strncmp(test, env[i], r) == 0)
-		{
-			env[i] = ft_strdup(bkp);
-			return (env);
-		}
-	env[i] = ft_strdup(bkp);
+			while (env[i] != NULL)
+			{
+				ft_putstr("test");
+				ret = i;
+				ret++;
+				env[i++] = env[ret];
+			}
 	env[i + 1] = NULL;
 	return (env);
 }

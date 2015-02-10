@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/10 08:43:25 by sdurr            ###   ########.fr        #
+#    Updated: 2015/02/10 16:57:33 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,6 +21,7 @@ SRC			= main.c \
 				fils.c \
 				ft_getenv.c \
 				ft_set_env.c \
+				ft_unset_env.c \
 				ft_ls.c \
 
 OBJ			= $(SRC:.c=.o)
