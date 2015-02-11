@@ -6,37 +6,31 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 09:51:47 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/11 09:45:25 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh1.h"
 #include "libft.h"
+#include <stdlib.h>
 
 int		test_commande(char **line, char **av, char **env)
 {
-	if (ft_strncmp(*line, "ls", 2) == 0 || ft_strncmp(*line, "/bin/ls", 7) == 0
-		|| ft_strncmp(*line, "/bin/pwd", 8) == 0
-		|| ft_strncmp(*line, "pwd", 3) == 0 || ft_strncmp(*line, "env", 3) == 0
-		|| ft_strncmp(*line, "cat", 3) == 0
-		|| ft_strncmp(*line, "/bin/cat", 3) == 0)
-		return (commande_sys(line, av, env));
-	else if (ft_strncmp(*line, "setenv", 6) == 0 || ft_strncmp(*line, "unsetenv", 8) == 0)
-	{
-		env = ft_set_env(line, env);
-		return (1);
-	}
-	else if (ft_strncmp(*line, "cd", 2) == 0
-			 || ft_strncmp(*line, "/bin/cd", 7) == 0 || **line == '/')
-		return (ft_cd(line));
-	else if (ft_strncmp(*line, "exit", 4) == 0)
+	char	**split;
+	int		i;
+
+	line = line;
+	av = av;
+	i = 0;
+	split = split_path(env);
+	i = commande_unsys(line, env);
+	if (i == -1)
 		return (-1);
+	else if (i == 1)
+		return (1);
 	else
-		if (**line != '\0')
-		{
-			ft_putstr_fd("command not found: ", 2);
-			ft_putstr_fd(*line, 2);
-			ft_putchar ('\n');
-		}
-	return (1);
+	{
+		return (commande_sys(line, av, env, split));
+	}
+		return (1);
 }

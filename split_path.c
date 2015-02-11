@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fils.c                                             :+:      :+:    :+:   */
+/*   test_commande.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/11 09:52:01 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/11 09:16:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft.h"
 #include "ft_sh1.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int		fils(char **line, char **av, char **env, char *path)
+char		**split_path(char **env)
 {
 	char	*test;
+	char	**split;
 	int		i;
 	int		j;
 
-	j = 0;
+	test = ft_getenv(env);
+	i = ft_count_char(test, ':');
+	split = (char **)malloc(sizeof(char *) *i + 1);
 	i = 0;
-	test = ft_strnew(ft_strlen(*line));
-	while (line[0][j] != ' ')
-		test[i++] = line[0][j++];
-	path = ft_strjoin(path, "/");
-	path = ft_strjoin(path, test);
-	return (execve(path, av, env));
+	while (*test != '\0')
+	{
+		j = 0;
+		split[i] = ft_strdup(test);
+		while (split[i][j] != ':' && split[i][j] != '\0')
+			j++;
+		split[i][j] = '\0';
+		i++;
+		while(*test != ':' && *test != '\0')
+			test++;
+		if (*test != '\0')
+		test++;
+	}
+	split[i] = NULL;
+	return (split);
 }
