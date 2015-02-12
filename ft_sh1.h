@@ -6,12 +6,12 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 14:50:57 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 15:58:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		FT_SH1_H
-# define	FT_SH1_H
+#ifndef FT_SH1_H
+# define FT_SH1_H
 
 int			main(int ac, char **av, char **env);
 int			ft_sh1(char **av, char **env);
@@ -32,4 +32,4 @@ void		ft_cat(char **line, char **env, char **av);
 
 char		*ft_getenv(char **env);
 
-# endif
+#endif

@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/12 14:49:03 by sdurr            ###   ########.fr        #
+#    Updated: 2015/02/12 15:59:56 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,13 +31,14 @@ OBJ			= $(SRC:.c=.o)
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror
+export CFLAGS		= -Wall -Wextra -Werror
 
 HPATH		= -I libft/includes
 
 RM			= rm -rf
 
 $(NAME)	:		$(OBJ)
+				Make -C libft/
 				$(CC) -o $(NAME) $(OBJ) -L libft/ -lft
 
 clean	:
