@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/11 09:52:01 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 10:11:02 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		fils(char **line, char **av, char **env, char *path)
 		test[i++] = line[0][j++];
 	path = ft_strjoin(path, "/");
 	path = ft_strjoin(path, test);
+	av = ft_av(line);
 	return (execve(path, av, env));
 }

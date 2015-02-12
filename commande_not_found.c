@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   commande_not_found.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 10:23:05 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/12 10:29:39 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/12 10:30:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_sh1.h"
-#include <stdlib.h>
 
-int		ft_sh1(char **av, char **env)
+int			commande_not_found(char **line)
 {
-	char	*line;
-	int		ret;
-
-	ret = 1;
-	ft_putstr("minishell1 > ");
-	while (ret == 1)
+	if (**line != '\0')
 	{
-	line = ft_strnew(15);
-		ret = get_next_line(0, &line);
-		if (test_commande(&line, av, env) == -1)
-			return (-1);
-		ft_putstr("minishell1 > ");
+		ft_putstr_fd("command not found: ", 2);
+		ft_putstr_fd(*line, 2);
+		ft_putchar ('\n');
 	}
-	return (0);
+	return (1);
 }

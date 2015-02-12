@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat.c                                           :+:      :+:    :+:   */
+/*   ft_av.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/10 08:42:06 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 09:10:25 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/12 10:11:08 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/12 10:18:39 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
+#include <stdlib.h>
 
-void		ft_cat(char **line, char **env, char **av)
+char	**ft_av(char **line)
 {
-	char	*arg;
-	int		i;
-	char	*test;
+	char **av;
+	int i;
+	char *save;
+	int j;
 
-	test = NULL;
+	save = ft_strdup(*line);
+	i = ft_count_char(*line, ' ');
+	av = (char **)malloc(sizeof(char *) * i + 1);
 	i = 0;
-	arg = ft_strdup(*line);
-	arg += 4;
-	if (*arg == '-')
+	while (*save != '\0')
 	{
-		test = ft_strnew(3);
-		test[0] = *arg;
-		arg++;
-		test[1] = *arg;
-		arg += 2;
-		ft_putchar (*arg);
+		j = 0;
+		av[i] = ft_strdup(save);
+		while (av[i][j] != ' ' && av[i][j] != '\0')
+			j++;
+		av[i][j] = '\0';
+		i++;
+		while (*save != ' ' && *save != '\0')
+			save++;
+		if (*save != '\0')
+			save++;
 	}
-	av[i++] = ft_strdup("cat");
-	if (test != NULL)
-		av[i++] = test;
-	av[i++] = ft_strdup(arg);
 	av[i] = NULL;
-	execve("/bin/cat", av, env);
+	return (av);
 }

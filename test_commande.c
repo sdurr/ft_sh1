@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/11 09:45:25 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 10:29:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		test_commande(char **line, char **av, char **env)
 	else if (i == 1)
 		return (1);
 	else
-	{
-		return (commande_sys(line, av, env, split));
-	}
-		return (1);
+		i = commande_sys(line, av, env, split);
+	if (i == 0)
+		return(commande_not_found(line));
+	return (1);
 }
