@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commande_unsys.c                                   :+:      :+:    :+:   */
+/*   test_access.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 09:22:21 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 15:34:10 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/12 14:42:13 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/12 15:02:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
-#include "ft_sh1.h"
 
-int		commande_unsys(char **line, char **env)
+int		ft_access(char **line, char *path)
 {
-	if (ft_strncmp(*line, "setenv", 6) == 0
-		|| ft_strncmp(*line, "unsetenv", 8) == 0)
-	{
-		env = ft_set_env(line, env);
+	char	*test;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	if (**line == '\0')
+		return (0);
+	test = ft_strnew(ft_strlen(*line));
+	while (line[0][j] != ' ' && line[0][j] != '\0')
+		test[i++] = line[0][j++];
+	path = ft_strjoin(path, "/");
+	path = ft_strjoin(path, test);
+	if (access(path, F_OK) == 0)
 		return (1);
-	}
-	else if (ft_strncmp(*line, "cd", 2) == 0)
-		return (ft_cd(line));
-	else if (ft_strncmp(*line, "/bin/cd", 7) == 0 || **line == '/')
-		return (ft_cd(line));
-	else if (ft_strncmp(*line, "exit", 4) == 0)
-		return (-1);
 	return (0);
 }

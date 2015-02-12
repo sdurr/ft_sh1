@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 10:29:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 15:32:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int		test_commande(char **line, char **av, char **env)
 {
 	char	**split;
 	int		i;
+	int		j;
+	int		test;
 
-	line = line;
-	av = av;
+	j = 0;
 	i = 0;
 	split = split_path(env);
 	i = commande_unsys(line, env);
@@ -29,8 +30,14 @@ int		test_commande(char **line, char **av, char **env)
 	else if (i == 1)
 		return (1);
 	else
-		i = commande_sys(line, av, env, split);
+	{
+		test = 0;
+		while (split[j] != NULL && test == 0)
+			test = ft_access(line, split[j++]);
+		if (test == 1)
+			return (commande_sys(line, av, env, split[j - 1]));
+	}
 	if (i == 0)
-		return(commande_not_found(line));
+		return (commande_not_found(line));
 	return (1);
 }

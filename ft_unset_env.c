@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 17:02:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 15:10:20 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_unset_env(char **line, char **env)
 	char		*bkp;
 	char		*test;
 	int			r;
-	int		ret;
+	int			ret;
 
 	bkp = ft_strdup(*line);
 	i = -1;
@@ -33,7 +33,6 @@ char	**ft_unset_env(char **line, char **env)
 		if (ft_strncmp(test, env[i], r) == 0)
 			while (env[i] != NULL)
 			{
-				ft_putstr("test");
 				ret = i;
 				ret++;
 				env[i++] = env[ret];

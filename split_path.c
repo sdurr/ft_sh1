@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 10:19:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 10:36:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		**split_path(char **env)
 
 	test = ft_getenv(env);
 	i = ft_count_char(test, ':');
-	split = (char **)malloc(sizeof(char *) *i + 1);
+	split = (char **)malloc(sizeof(char *) * i + 1);
 	i = 0;
 	while (*test != '\0')
 	{
@@ -33,10 +33,10 @@ char		**split_path(char **env)
 			j++;
 		split[i][j] = '\0';
 		i++;
-		while(*test != ':' && *test != '\0')
+		while (*test != ':' && *test != '\0')
 			test++;
 		if (*test != '\0')
-		test++;
+			test++;
 	}
 	split[i] = NULL;
 	return (split);

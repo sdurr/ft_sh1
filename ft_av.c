@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 10:11:08 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 10:18:39 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 10:38:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 char	**ft_av(char **line)
 {
-	char **av;
-	int i;
-	char *save;
-	int j;
+	char	**av;
+	int		i;
+	char	*save;
+	int		j;
 
 	save = ft_strdup(*line);
 	i = ft_count_char(*line, ' ');

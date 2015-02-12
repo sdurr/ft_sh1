@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:40:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 17:28:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/12 10:37:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char *ft_getenv(char **env)
 {
-	char *ret;
-	int i;
+	char	*ret;
+	int		i;
 
 	ret = ft_strnew(ft_strlen(env[0] + 1));
 	i = 0;

@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/12 10:32:50 by sdurr            ###   ########.fr        #
+#    Updated: 2015/02/12 14:49:03 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,6 +16,7 @@ SRC			= main.c \
 				ft_sh1.c \
 				ft_av.c \
 				ft_cd.c \
+				ft_access.c \
 				commande_sys.c \
 				commande_not_found.c \
 				commande_unsys.c \
