@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 11:07:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/13 14:56:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void		ft_ls(char **line, char **env, char **av);
 void		ft_cat(char **line, char **env, char **av);
 
 char		*ft_getenv(char **env);
+char		*user(char **env);
 char		*test_space(char **line);
 #endif

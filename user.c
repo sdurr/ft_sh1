@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   user.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 14:52:29 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/13 14:53:00 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/13 15:00:42 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "get_next_line.h"
-#include "ft_sh1.h"
-#include <stdlib.h>
 
-int		ft_sh1(char **av, char **env)
+char	*user(char **env)
 {
-	char	*line;
-	int		ret;
-	int		test;
+	int		i;
+	char	*ret;
 
-	ret = 1;
-	ft_putstr(user(env));
-	line = ft_strnew(15);
-	while (ret == 1)
+	i = 0;
+	while (env[i] != NULL && ft_strncmp(env[i], "USER=", 5) != 0)
+		i++;
+	if (env[i] != NULL)
 	{
-		free(line);
-		ret = get_next_line(0, &line);
-		test = test_commande(&line, av, env);
-		if (test == -1)
-			return (0);
-		ft_putstr(user(env));
+		ret = ft_strdup(env[i]);
+		ret += 5;
+		ret = ft_strjoin(ret, " $> ");
+		return (ret);
 	}
-	return (0);
+	return ("$> ");
 }
