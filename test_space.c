@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_commande.c                                    :+:      :+:    :+:   */
+/*   test_space.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 09:08:44 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/13 10:40:29 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/13 11:08:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh1.h"
 #include "libft.h"
-#include <stdlib.h>
 
-char		**split_path(char **env)
+char		*test_space(char **line)
 {
-	char	*test;
-	char	**split;
 	int		i;
+	char	*ret;
 	int		j;
 
-	test = ft_getenv(env);
-	i = ft_count_char(test, ':');
-	split = (char **)malloc(sizeof(char *) * i + 1);
+	j = 0;
+	ret = ft_strnew(ft_strlen(*line));
 	i = 0;
-	while (*test != '\0')
+	while (line[0][i] != '\0')
 	{
-		j = 0;
-		split[i] = ft_strdup(test);
-		while (split[i][j] != ':' && split[i][j] != '\0')
-			j++;
-		split[i][j] = '\0';
-		i++;
-		while (*test != ':' && *test != '\0')
-			test++;
-		if (*test != '\0')
-			test++;
+		while (line[0][i] != ' ' && line[0][i] != '\0' && line[0][i] != '\t')
+			ret[j++] = line[0][i++];
+		if (line[0][i] == ' ' && line[0][i - 1] != ' ' && j > 0)
+			ret[j++] = line[0][i++];
+		else if (line[0][i] == '\t' && line[0][i - 1] != '\t' && j > 0)
+		{
+			ret[j++] = ' ';
+			i++;
+		}
+		else
+			i++;
 	}
-	split[i + 1] = NULL;
-	return (split);
+	return (ret);
 }

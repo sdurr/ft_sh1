@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 15:58:15 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/13 11:07:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ int			commande_unsys(char **line, char **env);
 int			test_commande(char **line, char **av, char **env);
 int			fils(char **line, char **av, char **env, char *path);
 int			ft_access(char **line, char *path);
+
 char		**ft_set_env(char **line, char **env);
 char		**split_path(char **env);
 char		**ft_unset_env(char **line, char **env);
-char		**ft_av(char **line);
+char		**ft_av(char **line, int i);
 
 void		ft_ls(char **line, char **env, char **av);
 void		ft_cat(char **line, char **env, char **av);
 
 char		*ft_getenv(char **env);
-
+char		*test_space(char **line);
 #endif

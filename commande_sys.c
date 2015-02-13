@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:24:18 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 15:05:07 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/13 11:10:30 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int			commande_sys(char **line, char **av, char **env, char *split_path)
 		waitpid(pere, 0, 0);
 	if (pere == 0)
 		fils(line, av, env, split_path);
+	*line = ft_strnew(ft_strlen(*line));
 	return (1);
 }

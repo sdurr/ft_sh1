@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 15:43:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/13 10:55:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		test_commande(char **line, char **av, char **env)
 	j = 0;
 	i = 0;
 	split = split_path(env);
+	*line = test_space(line);
 	i = commande_unsys(line, env);
 	if (i == -1)
 		return (-1);
