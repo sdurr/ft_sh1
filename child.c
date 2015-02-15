@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commande_sys.c                                     :+:      :+:    :+:   */
+/*   fils.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:24:18 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 15:21:59 by sdurr            ###   ########.fr       */
+/*   Created: 2015/02/08 09:30:55 by sdurr             #+#    #+#             */
+/*   Updated: 2015/02/13 15:21:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <sys/wait.h>
-#include "ft_sh1.h"
+#include <stdlib.h>
 #include "libft.h"
+#include "ft_sh1.h"
 
-int			commande_sys(char **line, char **av, char **env, char *split_path)
+int		child(char **line, char **av, char **env, char *path)
 {
-	pid_t	pere;
+	char	*test;
+	int		i;
+	int		j;
 
-	pere = fork();
-	if (pere > 0)
-		waitpid(pere, 0, 0);
-	if (pere == 0)
-		child(line, av, env, split_path);
-	*line = ft_strnew(ft_strlen(*line));
-	return (1);
+	j = 0;
+	i = 0;
+	test = ft_strnew(ft_strlen(*line));
+	while (line[0][j] != ' ' && line[0][j] != '\0')
+		test[i++] = line[0][j++];
+	path = ft_strjoin(path, "/");
+	path = ft_strjoin(path, test);
+	av = ft_av(line, 0);
+	execve(path, av, env);
+	return (-1);
 }

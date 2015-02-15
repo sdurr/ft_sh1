@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 14:56:15 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/13 15:22:04 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			commande_sys(char **line, char **av, char **env, char *split_path);
 int			commande_not_found(char **line);
 int			commande_unsys(char **line, char **env);
 int			test_commande(char **line, char **av, char **env);
-int			fils(char **line, char **av, char **env, char *path);
+int			child(char **line, char **av, char **env, char *path);
 int			ft_access(char **line, char *path);
 
 char		**ft_set_env(char **line, char **env);

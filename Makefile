@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/13 14:55:59 by sdurr            ###   ########.fr        #
+#    Updated: 2015/02/13 15:29:06 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ SRC			= main.c \
 				commande_not_found.c \
 				commande_unsys.c \
 				test_commande.c \
-				fils.c \
+				child.c \
 				split_path.c \
 				ft_getenv.c \
 				ft_set_env.c \
@@ -45,6 +45,7 @@ $(NAME)	:		$(OBJ)
 
 clean	:
 				$(RM) $(OBJ)
+				Make -C libft/ fclean
 				$(RM) *~
 
 all		:		$(NAME)
