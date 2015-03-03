@@ -6,12 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 09:47:12 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/28 11:56:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/27 22:11:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
+#include "libft.h"
 
 char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
@@ -19,6 +20,7 @@ char		*ft_strsub(char const *s, unsigned int start, size_t len)
 	int		i;
 
 	i = 0;
+	ret = ft_strnew(len);
 	if (s)
 	{
 		if (s[start] || s[len - 1])

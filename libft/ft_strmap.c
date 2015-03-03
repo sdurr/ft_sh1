@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 22:00:17 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/28 11:50:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/27 22:12:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char *ft_strmap(char const *s, char (*f)(char))
 	int		i;
 
 	i = 0;
+	ret = ft_strnew(15);
 	if (s && f)
 	{
 		if (!(ret = (char *)malloc(sizeof(char*) * ft_strlen(s))))

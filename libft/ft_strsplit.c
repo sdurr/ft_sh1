@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 11:17:09 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/10 17:25:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/27 22:12:40 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	**ft_strsplit(char const *s, char c)
 
 	i = ft_count_char((char*)s, c);
 	j = 0;
+	k = 0;
 	if (!s)
 		return (NULL);
 	if (!(ret = (char **)malloc(sizeof(char*) * i + 1)))

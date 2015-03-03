@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:59:14 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 13:32:13 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 08:54:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		main(int ac, char **av, char **env)
 {
-	ac = ac;
-	return (ft_sh1(av, env));
+	if (ac > 0)
+		return (ft_sh1(av, env));
 }

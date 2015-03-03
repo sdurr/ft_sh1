@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/06 09:56:41 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/13 15:29:06 by sdurr            ###   ########.fr        #
+#    Updated: 2015/03/03 09:40:59 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,6 +26,7 @@ SRC			= main.c \
 				child.c \
 				split_path.c \
 				ft_getenv.c \
+				ft_gethome.c \
 				ft_set_env.c \
 				ft_unset_env.c \
 
@@ -33,27 +34,30 @@ OBJ			= $(SRC:.c=.o)
 
 CC			= gcc
 
+LIBFT		= libft/libft.a
+
 export CFLAGS		= -Wall -Wextra -Werror
 
 HPATH		= -I libft/includes
 
 RM			= rm -rf
 
-$(NAME)	:		$(OBJ)
-				Make -C libft/
-				$(CC) -o $(NAME) $(OBJ) -L libft/ -lft
+$(NAME)	:		$(LIBFT) $(OBJ)
+					$(CC) -o $(NAME) $(OBJ) -L libft/ -lft
+
+$(LIBFT) :
+						Make -C libft/
 
 clean	:
 				$(RM) $(OBJ)
-				Make -C libft/ fclean
-				$(RM) *~
+					Make -C libft/ fclean
 
 all		:		$(NAME)
 
 fclean	:		clean
-				$(RM) $(NAME)
+					$(RM) $(NAME)
 
 re		:		fclean all
 
 .c.o	:
-				$(CC) $(CFLAGS) $(HPATH) -c $(SRC)
+					$(CC) $(CFLAGS) $(HPATH) -c $(SRC)

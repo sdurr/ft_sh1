@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 09:58:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 15:22:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/03 09:07:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int			main(int ac, char **av, char **env);
 int			ft_sh1(char **av, char **env);
-int			ft_cd(char **line);
+int			ft_cd(char **line, char **env);
 int			commande_sys(char **line, char **av, char **env, char *split_path);
 int			commande_not_found(char **line);
 int			commande_unsys(char **line, char **env);
@@ -32,6 +32,7 @@ void		ft_ls(char **line, char **env, char **av);
 void		ft_cat(char **line, char **env, char **av);
 
 char		*ft_getenv(char **env);
+char		*ft_gethome(char **env);
 char		*user(char **env);
 char		*test_space(char **line);
 #endif
