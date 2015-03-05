@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 09:10:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/12 15:10:20 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/05 16:10:20 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	**ft_unset_env(char **line, char **env)
 	bkp += 9;
 	r = ft_strlen(bkp);
 	test = ft_strncpy(test, bkp, r);
+	if ((ft_strchr(test, ' ')) != NULL)
+		ft_putstr_fd("too many arguments to function: unsetenv\n", 2);
 	while (env[++i] != NULL)
 		if (ft_strncmp(test, env[i], r) == 0)
 			while (env[i] != NULL)
