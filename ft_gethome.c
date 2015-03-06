@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:40:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/03/03 09:03:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/06 16:19:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ char *ft_gethome(char **env)
 	int		i;
 
 	i = 0;
-	while (ft_strncmp(env[i], "HOME=", 5) != 0 && env[i] != NULL)
+	while (env[i] && ft_strncmp(env[i], "HOME=", 5) != 0)
+	{
+		ft_putstr("test    = ");
+		ft_putendl(env[i]);
 		i++;
-	ret = ft_strnew(ft_strlen(env[i] + 1));
-	ret = ft_strchr(env[i], '=');
+	}
+		ret = ft_strnew(ft_strlen(env[i] + 1));
+	if (env[i] != NULL)
+		ret = ft_strchr(env[i], '=');
+	else
+		ret = ft_strdup(".~");
 	if (ret)
 		ret++;
 	return (ret);
