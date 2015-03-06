@@ -19,10 +19,15 @@ char *ft_getenv(char **env)
 	int		i;
 
 	i = 0;
-	while (ft_strncmp(env[i], "PATH=", 5) != 0)
+	while (env[i] && ft_strncmp(env[i], "PATH=", 5) != 0)
 		i++;
-	ret = ft_strnew(ft_strlen(env[i] + 1));
-	ret = ft_strchr(env[i], '=');
+	if (env[i])
+	  {
+	    ret = ft_strnew(ft_strlen(env[i] + 1));
+	    ret = ft_strchr(env[i], '=');
+	  }
+	else
+	  ret = ft_strdup(".");
 	ret++;
 	return (ret);
 }

@@ -16,4 +16,5 @@ int		main(int ac, char **av, char **env)
 {
 	if (ac > 0 && env[0])
 		return (ft_sh1(av, env));
+	return (0);
 }

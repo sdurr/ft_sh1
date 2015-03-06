@@ -22,9 +22,7 @@ char	**ft_unset_env(char **line, char **env)
 	char		*test;
 	int			ret;
 
-	if ((ft_strncmp(*line, "unsetenv PATH", 13) == 0)
-		|| (ft_strncmp(*line, "unsetenv HOME", 13) == 0))
-		return (env);
+	ret = 0;
 	bkp = ft_strdup(*line);
 	i = -1;
 	test = ft_strnew(15);
@@ -32,14 +30,18 @@ char	**ft_unset_env(char **line, char **env)
 	test = ft_strncpy(test, bkp, ft_strlen(bkp));
 	if ((ft_strchr(test, ' ')) != NULL)
 		ft_putstr_fd("too many arguments to function: unsetenv\n", 2);
-	while (env[++i] != NULL)
+	while (env[++i] != NULL && ret == 0)
 		if (ft_strncmp(test, env[i], ft_strlen(bkp)) == 0)
-			while (env[i] != NULL)
+			while (env[ret] != NULL)
 			{
 				ret = i;
 				ret++;
 				env[i++] = env[ret];
-			}
-	env[i - 1] = NULL;
+		}
+	//	ft_putstr(env[i- 2]);
+ft_putnbr(i);
+ ft_putchar ('\n');	
+
+		env[i - 2] = NULL;
 	return (env);
 }

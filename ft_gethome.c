@@ -19,18 +19,15 @@ char *ft_gethome(char **env)
 	int		i;
 
 	i = 0;
-	while (env[i] && ft_strncmp(env[i], "HOME=", 5) != 0)
-	{
-		ft_putstr("test    = ");
-		ft_putendl(env[i]);
+	while (env[i] != NULL && ft_strncmp(env[i], "HOME=", 5) != 0)
 		i++;
-	}
-		ret = ft_strnew(ft_strlen(env[i] + 1));
+	if (env[i])
+	  ret = ft_strnew(ft_strlen(env[i] + 1));
 	if (env[i] != NULL)
-		ret = ft_strchr(env[i], '=');
+	  ret = ft_strchr(env[i], '=');
 	else
-		ret = ft_strdup(".~");
+	  ret = ft_strdup(".~");
 	if (ret)
-		ret++;
+	  ret++;
 	return (ret);
 }
