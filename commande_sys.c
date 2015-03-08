@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/08 09:24:18 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 15:21:59 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/08 09:59:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int			commande_sys(char **line, char **av, char **env, char *split_path)
 	pid_t	pere;
 
 	pere = fork();
+	*line = test_space(line, 0);
 	if (pere > 0)
 		waitpid(pere, 0, 0);
 	if (pere == 0)

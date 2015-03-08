@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:04:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/13 10:55:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/08 09:44:10 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int		test_commande(char **line, char **av, char **env)
+int		test_commande(char **line, char **av, char **env, int j)
 {
 	char	**split;
 	int		i;
-	int		j;
 	int		test;
 
-	j = 0;
-	i = 0;
 	split = split_path(env);
-	*line = test_space(line);
+	*line = test_space(line, 0);
 	i = commande_unsys(line, env);
 	if (i == -1)
 		return (-1);
@@ -36,7 +33,10 @@ int		test_commande(char **line, char **av, char **env)
 		while (split[j] != NULL && test == 0)
 			test = ft_access(line, split[j++]);
 		if (test == 1)
+		{
+			env = ft_shell_up(env, line);
 			return (commande_sys(line, av, env, split[j - 1]));
+		}
 	}
 	if (i == 0)
 		return (commande_not_found(line));

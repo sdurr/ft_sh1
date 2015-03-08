@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getenv.c                                        :+:      :+:    :+:   */
+/*   ft_shell_down.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/08 09:40:19 by sdurr             #+#    #+#             */
-/*   Updated: 2015/03/07 10:36:21 by sdurr            ###   ########.fr       */
+/*   Created: 2015/03/08 10:06:24 by sdurr             #+#    #+#             */
+/*   Updated: 2015/03/08 10:06:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-char *ft_gethome(char **env)
+char		**ft_shell_down(char **env)
 {
-	char	*ret;
 	int		i;
+	int		j;
+	char	*tmp;
 
 	i = 0;
-	while (env[i] != NULL && ft_strncmp(env[i], "HOME=", 5) != 0)
+	j = 0;
+	while (env[i] && ft_strncmp(env[i], "SHLVL", 5) != 0)
 		i++;
 	if (env[i])
-		ret = ft_strnew(ft_strlen(env[i] + 1));
-	if (env[i] != NULL)
-		ret = ft_strchr(env[i], '=');
-	else
-		ret = ft_strdup(".~");
-	if (ret)
-		ret++;
-	return (ret);
+	{
+		tmp = ft_strdup(env[i]);
+		tmp += 6;
+		j = ft_atoi(tmp);
+		j--;
+		env[i][6] = '\0';
+		env[i] = ft_strjoin(env[i], ft_itoa(j));
+	}
+	return (env);
 }

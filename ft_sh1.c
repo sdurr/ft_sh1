@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/06 10:01:40 by sdurr             #+#    #+#             */
-/*   Updated: 2015/03/06 15:50:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/03/08 09:20:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int		ft_sh1(char **av, char **env)
 	line = ft_strnew(15);
 	while (ret == 1)
 	{
-		free(line);
 		ret = get_next_line(0, &line);
-		test = test_commande(&line, av, env);
+		test = test_commande(&line, av, env, 0);
 		if (test == -1)
 			return (0);
 		ft_putstr(user(env));
